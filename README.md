@@ -5,7 +5,7 @@ Questo **progetto** ti consente di trovare le informazioni relative ai libri par
 ## Funzionalità
 
 Questo è il mio progetto per il corso Javascript Advanced di start2impact. 
-Attraverso il sito web, è possibile inserire il nome di una categoria di libri e accedere ad informazioni dettagliate su titolo, autore e descriione.
+Attraverso il sito web, è possibile inserire il nome di una categoria di libri e accedere ad informazioni dettagliate su titolo, autore e descrizione.
 
 ## Link deploy dell'app con netlify
 

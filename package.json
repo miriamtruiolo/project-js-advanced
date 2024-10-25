@@ -5,8 +5,7 @@
   "scripts": {
     "build": "npx tailwindcss -i ./src/css/input.css -o ./src/css/style.css --minify",
     "watch": "npx tailwindcss -i ./src/css/input.css -o ./src/css/style.css --watch --minify",
-    "webpack-watch": "webpack --watch",
-    "build-webpack": "webpack && cp _redirects dist/"
+    "webpack-watch": "webpack --watch"
   },
   "keywords": [],
   "author": "",
@@ -20,9 +19,12 @@
   "dependencies": {
     "autoprefixer": "^10.4.20",
     "axios": "^1.7.7",
+    "babel-loader": "^9.2.1",
     "dotenv": "^16.4.5",
+    "dotenv-webpack": "^8.1.0",
     "html-webpack-plugin": "^5.6.3",
     "lodash": "^4.17.21",
+    "mini-css-extract-plugin": "^2.9.1",
     "postcss": "^8.4.47"
   }
 }

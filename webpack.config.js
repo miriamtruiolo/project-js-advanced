@@ -1,25 +1,77 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin'); // Importa il plugin
 
-module.exports = {
-  entry: './src/js/index.js', // Path al file principale
+// Generated using webpack-cli https://github.com/webpack/webpack-cli
+
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const Dotenv = require('dotenv-webpack');
+
+const isProduction = process.env.NODE_ENV == "production";
+
+const stylesHandler = isProduction
+  ? MiniCssExtractPlugin.loader
+  : "style-loader";
+
+const config = {
+  entry: "./src/js/index.js",
   output: {
-    path: path.resolve(__dirname, 'dist'), // Cartella di output
-    filename: 'bundle.js', // Nome del bundle
+    path: path.resolve(__dirname, "dist"),
   },
-  mode: 'production', // Modalità per ottimizzare il bundle
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'], // Per i file CSS
-      },
-    ],
+  devServer: {
+    open: true,
+    host: "localhost",
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html', // Percorso al file HTML di input
-      filename: 'index.html', // Nome del file HTML di output
+      template: "./src/index.html",
     }),
+
+    new MiniCssExtractPlugin({
+      filename: './app/style.css',
+    }),
+
+    new Dotenv({
+      systemvars: true,
+    })
   ],
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/i,
+        loader: "babel-loader",
+      },
+      {
+        test: /\.css$/i,
+        use: [stylesHandler, "css-loader"],
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [stylesHandler, "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
+        type: "asset",
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'assets/images/'
+            }
+          }
+        ]
+      },
+    ],
+  },
+};
+
+module.exports = () => {
+  if (isProduction) {
+    config.mode = "production";
+
+    config.plugins.push(new MiniCssExtractPlugin());
+  } else {
+    config.mode = "development";
+  }
+  return config;
 };

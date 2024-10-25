@@ -1,11 +1,11 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin'); // Importa il plugin
 
 module.exports = {
   entry: './src/js/index.js', // Path al file principale
   output: {
     path: path.resolve(__dirname, 'dist'), // Cartella di output
     filename: 'bundle.js', // Nome del bundle
-    publicPath: '/', // Usato per i percorsi relativi
   },
   mode: 'production', // Modalità per ottimizzare il bundle
   module: {
@@ -16,9 +16,10 @@ module.exports = {
       },
     ],
   },
-  devServer: {
-    static: path.join(__dirname, 'dist'),
-    compress: true,
-    port: 9000,
-  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html', // Percorso al file HTML di input
+      filename: 'index.html', // Nome del file HTML di output
+    }),
+  ],
 };

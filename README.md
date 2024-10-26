@@ -9,7 +9,7 @@ Attraverso il sito web, è possibile inserire il nome di una categoria di libri 
 
 ## Link deploy dell'app con netlify
 
-link: https://js-advanced-project.netlify.app/
+link: https://js-advanced-project.netlify.app
 
 ## Screenshot
 

@@ -4,10 +4,10 @@ import axios from 'axios';
 async function fetchBooksByCategory(category) {
   try {
     const response = await axios.get(`https://openlibrary.org/subjects/${category}.json`);
-    return response.data.works; // Accedi ai lavori dal risultato
+    return response.data.works; 
   } catch (error) {
-    console.error('Errore durante il fetch dei libri:', error);
-    alert('Si è verificato un errore nel recupero dei dati.');
+    console.error('Error during description fetch:', error);
+    alert('Error while recovery the book description.');
     return [];
   }
 }
@@ -23,14 +23,14 @@ async function fetchBookDescription(key) {
 
     // Se la descrizione è una stringa, rimuovi i tag HTML
     if (typeof description === 'string') {
-      description = description.replace(/<[^>]*>/g, ''); // Rimuovi i tag HTML
+      description = description.replace(/<[^>]*>/g, ''); 
     }
 
-    return description || "Descrizione non disponibile.";
+    return description || "Description not avilable.";
   } catch (error) {
-    console.error('Errore durante il fetch della descrizione:', error);
-    alert('Si è verificato un errore nel recupero della descrizione del libro.');
-    return "Descrizione non disponibile.";
+    console.error('Error during description fetch:', error);
+    alert('Error while recovery the book description.');
+    return "Description not avilable.";
   }
 }
 
@@ -68,23 +68,23 @@ document.getElementById('searchButton').addEventListener('click', async () => {
   const resultsContainer = document.getElementById('resultsContainer');
 
   if (!category) {
-    alert("Inserisci una categoria.");
+    alert("Write a category.");
     return;
   }
 
   // Mostra messaggio di caricamento
-  resultsContainer.innerHTML = '<p class="text-gray-600">Caricamento in corso...</p>';
+  resultsContainer.innerHTML = '<p class="text-gray-200">Loading...</p>';
 
   try {
     const books = await fetchBooksByCategory(category);
 
     if (books.length === 0) { // Verifica se non ci sono risultati
-      resultsContainer.innerHTML = '<p class="text-red-500">Nessun risultato trovato per questa categoria. Assicurati di aver digitato correttamente.</p>';
+      resultsContainer.innerHTML = '<p class="text-gray-200">No results found. Make sure you have typed the category correctly.</p>';
     } else {
       displayBooks(books);
     }
   } catch (error) {
-    resultsContainer.innerHTML = '<p class="text-red-500">Errore nel recupero dei dati.</p>';
+    resultsContainer.innerHTML = '<p class="text-gray-200">Error retrieving data.</p>';
   }
 });
 

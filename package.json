@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "npx tailwindcss -i ./src/css/input.css -o ./src/css/style.css --minify",
+    "build": "npx tailwindcss -i ./src/css/input.css -o ./src/css/style.css --minify webpack --mode production",
     "watch": "npx tailwindcss -i ./src/css/input.css -o ./src/css/style.css --watch --minify",
     "webpack-watch": "webpack --watch"
   },

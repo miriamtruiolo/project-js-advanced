@@ -1,4 +1,3 @@
-// src/js/index.js
 import axios from 'axios';
 
 async function fetchBooksByCategory(category) {
@@ -21,7 +20,6 @@ async function fetchBookDescription(key) {
       description = description.value;
     }
 
-    // Se la descrizione è una stringa, rimuovi i tag HTML
     if (typeof description === 'string') {
       description = description.replace(/<[^>]*>/g, ''); 
     }
@@ -49,7 +47,7 @@ function displayBooks(books) {
 
     const authorsEl = document.createElement('p');
     authorsEl.className = "text-gray-600";
-    authorsEl.innerText = `Autori: ${book.authors.map(author => author.name).join(', ')}`;
+    authorsEl.innerText = `Author: ${book.authors.map(author => author.name).join(', ')}`;
 
     bookDiv.addEventListener('click', async () => {
       const description = await fetchBookDescription(book.key);

@@ -6,7 +6,7 @@ module.exports = {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
     },
-    mode: 'production', // Cambia a "production" quando fai il deploy
+    mode: 'production',
     module: {
         rules: [
             {

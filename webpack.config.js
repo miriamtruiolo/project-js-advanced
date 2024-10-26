@@ -1,24 +1,21 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/js/index.js', // Path al file principale
-  output: {
-    path: path.resolve(__dirname, 'dist'), // Cartella di output
-    filename: 'bundle.js', // Nome del bundle
-    publicPath: '/', // Usato per i percorsi relativi
-  },
-  mode: 'production', // Modalità per ottimizzare il bundle
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'], // Per i file CSS
-      },
-    ],
-  },
-  devServer: {
-    static: path.join(__dirname, 'dist'),
-    compress: true,
-    port: 9000,
-  },
+    entry: './src/js/index.js',
+    output: {
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'dist'),
+    },
+    mode: 'production', // Cambia a "production" quando fai il deploy
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                },
+            },
+        ],
+    },
 };

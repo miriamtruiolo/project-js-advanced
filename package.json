@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "npx tailwindcss -i ./src/css/input.css -o ./src/css/style.css --minify",
-    "watch": "npx tailwindcss -i ./src/css/input.css -o ./src/css/style.css --watch --minify",
-    "webpack-watch": "webpack --watch"
+    "build": "webpack && npx tailwindcss -i ./src/css/input.css -o ./dist/main.css --minify",
+    "watch": "npx tailwindcss -i ./src/css/input.css -o ./src/css/style.css --watch --minify"
   },
   "keywords": [],
   "author": "",

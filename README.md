@@ -13,7 +13,7 @@ link: https://js-advanced-project.netlify.app
 
 ## Screenshot
 
-https://github.com/miriamtruiolo/project-js-advanced/blob/main/src/img/preview.png
+![Banner](https://github.com/miriamtruiolo/project-js-advanced/blob/main/src/img/preview.png)
 
 ## Tecnologie utilizzate
 

@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Library</title>
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-    ></script>
-    <link rel="stylesheet" href="main.css">
-<script defer src="main.js"></script></head>
-<body class="font-montserrat text-[1.8rem] font-normal leading-relaxed flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-[#a57951] to-[#e1d9c9] text-[rgba(49,49,49,0.6)] p-2">
 
-  <h1 class="text-center mb-16 text-[#472c19] text-[2.4rem] font-bold uppercase">Search for your favorite category</h1>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Library</title>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <link rel="stylesheet" href="main.css">
+</head>
+
+<body
+  class="font-extrabold text-[1.8rem]leading-relaxed flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-[#a57951] to-[#e1d9c9] text-[rgba(49,49,49,0.6)] p-2">
+
+  <h1 class="text-center mt-20 mb-16 text-[#472c19] text-[2.4rem] font-bold uppercase">Search for your favorite category
+  </h1>
 
   <div class="relative flex items-center w-full max-w-md">
-      <input id="categoryInput" type="text" placeholder="Write a category" class="border border-gray-200 rounded-[10rem] shadow-xl px-4 py-2 w-full">
-      <button type="button" id="searchButton" class="search__btn absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-[#FFFFFF] rounded-[10rem] flex justify-center items-center shadow-xl hover:shadow-xl transition-shadow">
-        <ion-icon name="search" class="text-[#472c19] w-8 h-8"></ion-icon>
-      </button>
+    <input id="categoryInput" type="text" placeholder="Write a category"
+      class="border border-gray-200 rounded-[10rem] shadow-xl px-4 py-2 w-full">
+    <button type="button" id="searchButton"
+      class="search__btn absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-[#FFFFFF] rounded-[10rem] flex justify-center items-center shadow-xl hover:shadow-xl transition-shadow">
+      <ion-icon name="search" class="text-[#472c19] w-8 h-8"></ion-icon>
+    </button>
   </div>
 
   <div id="resultsContainer" class="mt-6 w-full max-w-md"></div>
 
-  <script src="bundle.js"></script>
+  <script src="bundle.js" defer></script>
 </body>
+
 </html>

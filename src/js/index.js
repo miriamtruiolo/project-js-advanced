@@ -1,12 +1,13 @@
 import axios from 'axios';
+import _ from 'lodash';
 
 async function fetchBooksByCategory(category) {
   try {
     const response = await axios.get(`https://openlibrary.org/subjects/${category}.json`);
-    return response.data.works; 
+    return _.get(response, 'data.works', []); 
   } catch (error) {
-    console.error('Error during description fetch:', error);
-    alert('Error while recovery the book description.');
+    console.error('Error during books fetch:', error);
+    alert('An error occurred while fetching the books. Please try again later.');
     return [];
   }
 }
@@ -14,7 +15,7 @@ async function fetchBooksByCategory(category) {
 async function fetchBookDescription(key) {
   try {
     const response = await axios.get(`https://openlibrary.org${key}.json`);
-    let description = response.data.description;
+    let description = _.get(response, 'data.description', "Description not available.");
 
     if (typeof description === 'object' && description.value) {
       description = description.value;
@@ -26,8 +27,8 @@ async function fetchBookDescription(key) {
 
     return description || "Description not avilable.";
   } catch (error) {
-    console.error('Error during description fetch:', error);
-    alert('Error while recovery the book description.');
+    console.error('Error during book description fetch:', error);
+    alert('An error occurred while fetching the book description. Please try again later.');
     return "Description not avilable.";
   }
 }
@@ -66,7 +67,7 @@ document.getElementById('searchButton').addEventListener('click', async () => {
   const resultsContainer = document.getElementById('resultsContainer');
 
   if (!category) {
-    alert("Write a category.");
+    alert("Please enter a category.");
     return;
   }
 
@@ -77,12 +78,13 @@ document.getElementById('searchButton').addEventListener('click', async () => {
     const books = await fetchBooksByCategory(category);
 
     if (books.length === 0) { // Verifica se non ci sono risultati
-      resultsContainer.innerHTML = '<p class="text-gray-200">No results found. Make sure you have typed the category correctly.</p>';
+      resultsContainer.innerHTML = '<p class="text-gray-200">No results found. Please check your category.</p>';
     } else {
       displayBooks(books);
     }
   } catch (error) {
-    resultsContainer.innerHTML = '<p class="text-gray-200">Error retrieving data.</p>';
+    console.error('Error during books fetch in search button handler:', error);
+    resultsContainer.innerHTML = '<p class="text-gray-200">An error occurred while retrieving data. Please try again.</p>';
   }
 });
 

@@ -3,6 +3,11 @@ import "../css/input.css";
 import axios from 'axios';
 import _ from 'lodash';
 
+function handleError(error, context) {
+  console.error(`Error in ${context}:`, error); // Log dell'errore con il contesto
+  alert('An unexpected error occurred. Please try again later.'); // Messaggio di errore generico
+}
+
 async function fetchBooksByCategory(category) {
   try {
     const response = await axios.get(`https://openlibrary.org/subjects/${category}.json`);
@@ -10,6 +15,7 @@ async function fetchBooksByCategory(category) {
   } catch (error) {
     console.error('Error during books fetch:', error);
     alert('An error occurred while fetching the books. Please try again later.');
+    handleError(error, 'fetchBooksByCategory');
     return [];
   }
 }
@@ -31,6 +37,7 @@ async function fetchBookDescription(key) {
   } catch (error) {
     console.error('Error during book description fetch:', error);
     alert('An error occurred while fetching the book description. Please try again later.');
+    handleError(error, 'fetchBookDescription');
     return "Description not avilable.";
   }
 }
@@ -87,6 +94,7 @@ document.getElementById('searchButton').addEventListener('click', async () => {
   } catch (error) {
     console.error('Error during books fetch in search button handler:', error);
     resultsContainer.innerHTML = '<p class="text-gray-200">An error occurred while retrieving data. Please try again.</p>';
+    handleError(error, 'searchButton click handler');
   }
 });
 

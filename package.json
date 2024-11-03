@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack && npx tailwindcss -i ./src/css/input.css -o ./dist/main.css --minify",
-    "watch": "npx tailwindcss -i ./src/css/input.css -o ./src/css/style.css --watch --minify"
+    "start": "webpack serve --config webpack.config.js --mode=development",
+    "watch": "npx tailwindcss -i ./src/css/input.css -o ./src/css/style.css --watch --minify",
+    "build:dev": "webpack --mode=development"
   },
   "keywords": [],
   "author": "",
